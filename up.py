@@ -17,7 +17,8 @@ for item in j['monitors']:
 		if (monitor['status'] == "8") | (monitor['status'] == "9"):
 			with open(sys.argv[3], 'a') as file:
 				file.write('\n' + datetime.now().strftime("%Y-%m-%d %H:%M") + ';' + monitor['id'] + ';' + monitor['friendlyname'] + ';' + monitor['url'] + ';' + monitor['status'] + ';restart')
-			os.popen("sudo -S service tomcat6 restart", 'w').write(sys.argv[4])
+			os.popen("service tomcat6 restart", 'w')
+			break
 		else:
 			if sys.argv[2] == 'all':
 				with open(sys.argv[3], 'a') as file:
